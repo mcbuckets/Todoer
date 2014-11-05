@@ -47,10 +47,9 @@
 				}
 			}else{
 
-				// require './app/controller/home.php';
-				// $home = new Home();
-				// $home->index();
-				echo 'govno radi!';
+				require './app/controller/home.php';
+				$home = new Home();
+				$home->index();				
 
 			}
 
