@@ -1,14 +1,17 @@
 <?php
 
-
 class Controller
 {
 
-	public $db;
+	protected $db;
 
 	public function __construct()
 	{
+		Session::init();
 		$this->openDatabaseConnection();
+		if (isset($_SESSION['user_logged_in'])) {
+            header('location: ' . URL . 'dashboard');
+        }
 	}
 
 	private function openDatabaseConnection()
@@ -26,5 +29,4 @@ class Controller
 		return new $model_name($this->db);
 
 	}
-
 }

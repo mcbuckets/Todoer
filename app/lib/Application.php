@@ -49,8 +49,7 @@
 
 				require './app/controller/home.php';
 				$home = new Home();
-				$home->index();				
-
+				$home->index();			
 			}
 
 		}
