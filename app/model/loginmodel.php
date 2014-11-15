@@ -11,7 +11,6 @@ class LoginModel
 
 	public function registerNewUser()
 	{
-		
 		$user_name = strip_tags($_POST['user_name']);
         $user_email = strip_tags($_POST['user_email']);
         $user_password_hash = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
