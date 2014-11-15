@@ -3,5 +3,5 @@
 </p>
 
 <p>
-	<a href="<?php echo URL; ?>register">Click to register</a>
+	<a href="<?php echo URL; ?>login/register">Click to register</a>
 </p>
