@@ -28,7 +28,7 @@ class LoginModel
 			AND !empty($_POST['user_password'])
 			AND !empty($_POST['user_email'])
 			AND filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)){
-		
+
 			$user_name = strip_tags($_POST['user_name']);
 	        $user_email = strip_tags($_POST['user_email']);
 	        $user_password_hash = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
@@ -60,7 +60,7 @@ class LoginModel
 	                              ':user_password_hash' => $user_password_hash,
 	                              ':user_email' => $user_email,
 	                              ':user_creation_timestamp' => $user_creation_timestamp));
-	        
+
 	        $count = $query->rowCount();
 	        if($count != 1){
 	        	$_SESSION["feedback_negative"][] = "Registration failed!";
@@ -69,7 +69,7 @@ class LoginModel
 
 	        $result_user_row = $query->fetch();
 	        $user_id = $result_user_row->user_id;
-	    
+
 	    }else{
 	    	$_SESSION['feedback_negative'][] = "Unknown error!";
 	    }
