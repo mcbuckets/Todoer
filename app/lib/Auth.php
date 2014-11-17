@@ -15,10 +15,4 @@ class Auth
 			exit();
 		}			
 	}
-	
-
-
-
-
-
 }

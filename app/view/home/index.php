@@ -5,3 +5,4 @@
 <p>
 	<a href="<?php echo URL; ?>login/register">Click to register</a>
 </p>
+<?php echo date('m/d',time());?>

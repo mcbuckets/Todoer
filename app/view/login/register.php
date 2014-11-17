@@ -3,7 +3,7 @@
 <p>Enter your data:</p>
 <form action="<?php echo URL;?>login/register_submit" method="POST">
 	<label for="login_input_username">
-		Please enter your username:
+		Please enter your username (min. 2 max. 64 chars and only letters and numbers):
 	</label><br>
 	<input type="text" name="user_name" id="login_input_username" pattern="[a-zA-Z0-9]{2,64}" required><br>
 	<label for="login_input_email">
@@ -15,5 +15,4 @@
 	</label><br>
 	<input id="login_input_password_new" type="password" name="user_password" pattern=".{6,}" required autocomplete="off" /><br><br>
 	<input type="Submit"/>
-	<?php var_dump($this->db)?>
 </form>
