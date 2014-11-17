@@ -69,7 +69,7 @@ class LoginModel
 	        $result_user_row = $query->fetch();
 	        $user_id = $result_user_row->user_id;
 
-	    	}else{
+	    }else{
 	    	$_SESSION['feedback_negative'][] = "Unknown error!";
 		}
 
