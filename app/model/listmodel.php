@@ -9,12 +9,12 @@ class ListModel
 		try{
 			$this->db = $db;
 		}catch(PDOException $e){
-			exit('Database connection problem!');			
+			exit('Database connection problem!');
 		}
 
 	}
 
-	
+
 
 
 }
