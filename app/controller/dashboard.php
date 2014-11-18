@@ -3,21 +3,18 @@
 class Dashboard extends Controller
 {
 
+    public function __construct()
+    {
+        
+        Auth::handleLogin();
+    }
 
-	public function __construct()
-	{
-		//parent::__construct();
-		Auth::handleLogin();
-	}
+    public function index()
+    {
 
-	public function index()
-	{
-		
-		$list_model = $this->loadModel('ListModel');
-		require 'app/view/dashboard/index.php';			
-	}
+        $list_model = $this->loadModel('ListModel');
+        require 'app/view/dashboard/index.php';
 
-
-
+    }
 
 }

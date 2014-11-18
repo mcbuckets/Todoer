@@ -1,5 +1,5 @@
 <p>Register controller radi!</p>
-<?php var_dump( $_SESSION);?>
+<?php echo $_SESSION['feedback_negative'];?>
 <p>Enter your data:</p>
 <form action="<?php echo URL;?>login/register_submit" method="POST">
 	<label for="login_input_username">

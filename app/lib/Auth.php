@@ -3,16 +3,16 @@
 class Auth
 {
 
-	public static function handleLogin()
-	{
-		Session::init();
+    public static function handleLogin()
+    {
+        Session::init();
 
-		if(!isset($_SESSION['user_logged_in'])){
+        if (!isset($_SESSION['user_logged_in'])) {
 
-			Session::destroy();
-			header('location:'.URL.'login');
+            Session::destroy();
+            header('location:' . URL . 'login');
 
-			exit();
-		}			
-	}
+            exit();
+        }
+    }
 }

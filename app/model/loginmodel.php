@@ -8,6 +8,64 @@ class LoginModel
         $this->db = $db;
     }
 
+    public function loginUser()
+    {
+
+        if (!isset($_POST['user_name']) or empty($_POST['user_name'])) {
+            $_SESSION['feedback_negative'][] = "Username field is empty!";
+            return false;
+        }
+        if (!isset($_POST['user_password']) or empty($_POST['user_password'])) {
+            $_SESSION['feedback_negative'][] = "Password field is empty!";
+            return false;
+        }
+
+        $sth = $this->db->prepare("SELECT user_id,
+    									  user_name,
+    									  user_password_hash,
+    									  user_email
+									FROM  user
+									WHERE user_name = :user_name");
+
+        $sth->execute(array(':user_name' => $_POST['user_name']));
+
+        $count = $sth->rowCount();
+
+        if ($count != 1) {
+            $_SESSION['feedback_negative'][] = "Login failed! Username does not exist!";
+            return false;
+        }
+
+        $result = $sth->fetch();
+
+        if (password_verify($_POST['user_password'], $result->user_password_hash)) {
+
+            // if ($result->user_active != 1) {
+            //     $_SESSION['feedback_negative'][] = "Your account is not activated!";
+            //     return false;
+            // }
+
+            Session::init();
+            Session::set('user_logged_in', true);
+            Session::set('user_id', $result->user_id);
+            Session::set('user_name', $result->user_name);
+
+            $user_last_login_timestamp = time();
+
+            $sql = "UPDATE user SET user_last_login_timestamp = :user_last_login_timestamp WHERE user_id = :user_id";
+            $sth = $this->db->prepare($sql);
+            $sth->execute(array(':user_id' => $result->user_id, ':user_last_login_timestamp' => $user_last_login_timestamp));
+
+            return true;
+
+        } else {
+            $_SESSION['feedback_negative'][] = "Login failed! Wrong password!";
+            return false;
+        }
+
+        return false;
+    }
+
     public function registerNewUser()
     {
 
@@ -67,6 +125,8 @@ class LoginModel
 
             $resul_user_row = $query->fetch();
             $user_id        = $result_user_row->user_id;
+
+            return true;
 
         } else {
             $_SESSION['feedback_negative'][] = "Unknown error!";
