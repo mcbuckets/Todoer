@@ -1,14 +1,5 @@
-<?php 
-
-	$feedback = Session::get('feedback_negative');
-
-	if(isset($_SESSION['feedback_negative']))
-	{
-		foreach ($feedback as $feedback ) {
-			echo $feedback;
-		}
-	}
-	Session::set('feedback_negative', null);
+<?php
+$this->renderFeedback();
 ?>
 <p>Login controller</p>
  <form action="<?php echo URL;?>login/login_submit" method="post">

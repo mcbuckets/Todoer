@@ -3,30 +3,26 @@
 class Controller
 {
 
-	protected $db;
+    protected $db;
 
-	public function __construct()
-	{
-		Session::init();
-		$this->openDatabaseConnection();
-		if (isset($_SESSION['user_logged_in'])) {
-            header('location: ' . URL . 'dashboard');
+    public function __construct()
+    {
+        Session::init();
+
+        try {
+            $this->db = new Database();
+        } catch (Exception $e) {
+            die('Database connection could not be established!');
         }
-	}
+        
+        $this->view = new View();
+    }
 
-	private function openDatabaseConnection()
-	{
+    public function loadModel($model_name)
+    {
+        require 'app/model/' . strtolower($model_name) . '.php';
 
-		$options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
+        return new $model_name($this->db);
 
-		$this->db = new PDO(DB_TYPE.':host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS, $options);
-	}
-
-	public function loadModel($model_name)
-	{
-		require 'app/model/'.strtolower($model_name).'.php';
-
-		return new $model_name($this->db);
-
-	}
+    }
 }

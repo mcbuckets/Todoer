@@ -10,8 +10,7 @@ class Login extends Controller
 
     public function index()
     {
-    	$login_model = $this->loadModel('LoginModel');
-        require 'app/view/login/login.php';
+        $this->view->render('login/login');
     }
 
     public function login_submit()
@@ -30,7 +29,7 @@ class Login extends Controller
     public function register()
     {
         $login_model = $this->loadModel('LoginModel');
-        require 'app/view/login/register.php';
+        $this->view->render('login/register');
     }
 
     public function register_submit()
