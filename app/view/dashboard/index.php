@@ -13,9 +13,9 @@
 	<form action="<?php echo URL;?>dashboard/create_list" method="POST">
 		<label>Enter list name</label>
 		<input type="text" name="list_name">
-		<input type="Submit" name="Create" value="Create new list"> 
+		<input type="Submit" name="Create" value="Create new list">
 	</form>
-	<?php 
+	<?php
 		if($this->list){
 			foreach($this->list as $key => $value){
 				echo '<tr>';

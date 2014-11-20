@@ -1,7 +1,6 @@
 <?php
 
 class Dashboard extends Controller
-
 {
     public function __construct()
     {
@@ -34,14 +33,12 @@ class Dashboard extends Controller
 
     public function show_list($list_id)
     {
-        if(isset($list_id))
-        {
-            $list_model = $this->loadModel('ListModel');
+        if (isset($list_id)) {
+            $list_model        = $this->loadModel('ListModel');
             $this->view->tasks = $list_model->showTasks($list_id);
             $this->view->render('dashboard/todo');
-        }
-        else{
-            header('location:'.URL.'dashboard/index');
+        } else {
+            header('location:' . URL . 'dashboard/index');
         }
     }
 

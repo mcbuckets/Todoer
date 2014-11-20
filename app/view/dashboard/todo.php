@@ -21,7 +21,6 @@
                 echo '</tr>';
 			}
 		}else echo "Add tasks!";
-
 	?>
 </body>
 </html>
