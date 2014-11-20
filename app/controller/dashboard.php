@@ -1,8 +1,8 @@
 <?php
 
 class Dashboard extends Controller
-{
 
+{
     public function __construct()
     {
         parent::__construct();
@@ -19,9 +19,7 @@ class Dashboard extends Controller
     public function create_list()
     {
         $list_model = $this->loadModel('ListModel');
-        $list_model->createNewTodoList();
-
-        header('location:' . URL . 'dashboard');
+        $this->view->render('dashboard/createlist');
     }
 
     public function delete_list($list_id)
@@ -34,14 +32,17 @@ class Dashboard extends Controller
         header('location:' . URL . 'dashboard/index');
     }
 
-    public function view_list($list_id)
+    public function show_list($list_id)
     {
-        if (isset($list_id)) {
-            $list_model       = $this->loadModel('ListModel');
-            $this->view->list = $list_model->viewList($list_id);
+        if(isset($list_id))
+        {
+            $list_model = $this->loadModel('ListModel');
+            $this->view->tasks = $list_model->showTasks($list_id);
+            $this->view->render('dashboard/todo');
         }
-        header('location:' . URL . 'dashboard/list');
-
+        else{
+            header('location:'.URL.'dashboard/index');
+        }
     }
 
 }

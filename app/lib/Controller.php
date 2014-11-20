@@ -14,7 +14,7 @@ class Controller
         } catch (Exception $e) {
             die('Database connection could not be established!');
         }
-        
+
         $this->view = new View();
     }
 

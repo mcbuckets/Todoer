@@ -19,7 +19,7 @@
 		if($this->list){
 			foreach($this->list as $key => $value){
 				echo '<tr>';
-                echo '<td><a href="'. URL . 'todo/' . $value->list_id.'">'.$value->list_name.'</a></td>';
+                echo '<td><a href="'. URL . 'dashboard/show_list/' . $value->list_id.'">'.$value->list_name.'</a></td>';
                 echo '<td><a href="'. URL . 'dashboard/delete_list/' . $value->list_id.'">     Delete</a></td>';
                 echo '</tr>';
 			}

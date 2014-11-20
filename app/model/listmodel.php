@@ -5,7 +5,7 @@ class ListModel
 
     public function __construct($db)
     {
-        $ths->db = $db;
+        $this->db = $db;
     }
 
     public function showUserLists()
@@ -53,6 +53,15 @@ class ListModel
         }
         return false;
 
+    }
+
+    public function showTasks($list_id)
+    {
+        $sql = "SELECT task_name, task_id FROM task WHERE list_id = :list_id";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':list_id'=>$list_id));
+
+        return $query->fetchAll();
     }
 
 }
