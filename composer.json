@@ -1,0 +1,20 @@
+{
+    "name": "Todoer",
+    "type": "project",
+    "description": "Simple todo list manager",
+    "keywords": ["todo", "mvc", "php", "mysql"],
+    "homepage": "https://todoer.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frano Barać",
+            "role": "Developer"
+        }
+    ],
+    "require":{
+        "php": ">=5.3.7",
+        "ircmaxell/password-compat": "~1.0.3",
+        "phpmailer/phpmailer": "dev-master",
+        "raveren/kint": "dev-master"
+    }
+}
