@@ -7,8 +7,7 @@ CREATE TABLE IF NOT EXISTS `todoer`.`user`(
  `user_active` tinyint(1) NOT NULL DEFAULT '0',
  `user_activation_hash` varchar(255) NOT NULL,
  `user_creation_time` datetime NOT NULL,
- `user_last_login_time` datetime,
- `user_status` boolean DEFAULT NULL,
+ `user_last_login_timestamp` timestamp,
  PRIMARY KEY (`user_id`),
  UNIQUE KEY `user_name` (`user_name`),
  UNIQUE KEY `user_email` (`user_email`)
