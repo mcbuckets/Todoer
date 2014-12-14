@@ -53,7 +53,7 @@ if (!empty($this->list)) {
         }
     }
 } else {
-    echo "Create your first todo list!";
+    echo "<br><br>Create your first todo list!";
 }
 ?>
 </div>

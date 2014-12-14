@@ -74,7 +74,7 @@ if ($this->tasks) {
         $counter++;
     }
 } else {
-    echo "Add tasks!";
+    echo "<br><br>Add tasks!";
 }?>
 <div id="dispMsg">
 <?php
