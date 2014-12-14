@@ -17,7 +17,7 @@
                 <a href="<?php echo URL;?>dashboard">Go to dashboard</a>
             </div>
             <div id="manipulate">
-                <form action="<?php echo URL;?>/login/logout" id="logout">
+                <form action="<?php echo URL;?>login/logout" id="logout">
                     <input type="Submit" name="Logout" value="Logout" id="btnLogout">
                 </form>
         		<form action="<?php echo URL . 'task/show_list/' . $this->tasks[0]->list_id;?>" method="GET" id="sortTasks">
