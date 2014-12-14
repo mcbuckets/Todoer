@@ -1,7 +1,7 @@
 Todoer
 ======
 
-simple php todo app (mvc, mysql)
+Task list manager(PHP, MySQL, MVC)
 
 If you want to install it locally you can follow these steps:
 
