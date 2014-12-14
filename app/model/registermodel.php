@@ -42,18 +42,18 @@ class RegisterModel
                 return false;
             }
 
-            $user_creation_timestamp = time();
-            $user_activation_hash    = sha1(uniqid(mt_rand(), true));
+            $user_creation_time   = date("Y-m-d H:i:s");
+            $user_activation_hash = sha1(uniqid(mt_rand(), true));
 
-            $sql = "INSERT INTO user (user_name, user_lastname, user_password_hash, user_email, user_creation_timestamp, user_activation_hash)
-	                    VALUES (:user_name, :user_lastname, :user_password_hash, :user_email, :user_creation_timestamp, :user_activation_hash)";
+            $sql = "INSERT INTO user (user_name, user_lastname, user_password_hash, user_email, user_creation_time, user_activation_hash)
+	                    VALUES (:user_name, :user_lastname, :user_password_hash, :user_email, :user_creation_time, :user_activation_hash)";
 
             $query = $this->db->prepare($sql);
             $query->execute(array(':user_name' => $user_name,
                 ':user_lastname'                   => $user_lastname,
                 ':user_password_hash'              => $user_password_hash,
                 ':user_email'                      => $user_email,
-                ':user_creation_timestamp'         => $user_creation_timestamp,
+                ':user_creation_timestamp'         => $user_creation_time,
                 ':user_activation_hash'            => $user_activation_hash));
 
             $count = $query->rowCount();
