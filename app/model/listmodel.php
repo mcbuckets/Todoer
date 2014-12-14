@@ -10,7 +10,22 @@ class ListModel
 
     public function showUserLists()
     {
-        $sql   = "SELECT list_id,list_name, list_time_created FROM list WHERE user_id = :user_id";
+        if (isset($_GET['sort_list']) and !empty($_GET['sort_list'])) {
+            $sort_parameter = strip_tags($_GET['sort_list']);
+            $sort_order     = TaskOps::sort_lists($sort_parameter);
+            $sort_order     = 'l.list' . $sort_order;
+        } else {
+            $sort_order = 'l.list_name';
+        }
+
+        $sql = "SELECT  l.list_id, l.list_name, l.list_time_created,  COUNT(t.task_id) AS number_of_tasks,
+                COALESCE(SUM(t.task_completed = 0),0) AS number_of_uncompleted_tasks
+                FROM list AS l
+                LEFT JOIN task AS t ON l.list_id = t.list_id
+                WHERE l.user_id = :user_id
+                GROUP BY l.list_id
+                ORDER BY $sort_order";
+
         $query = $this->db->prepare($sql);
         $query->execute(array(':user_id' => $_SESSION['user_id']));
 
@@ -20,18 +35,26 @@ class ListModel
 
     public function createNewTodoList()
     {
-        if (empty($_POST['list_name'])) {
+        if (empty($_POST['list_name']) or !isset($_POST['list_name'])) {
             $_SESSION['feedback_negative'][] = "List name field is empty";
             return false;
         } else {
 
-            $list_time_created = time();
+            $list_time_created = date("Y-m-d H:i:s");
 
             $sql   = "INSERT INTO list(list_name, list_time_created, user_id) VALUES (:list_name,:list_time_created,:user_id)";
             $query = $this->db->prepare($sql);
-            $query->execute(array(':list_name' => htmlentities($_POST['list_name']), ':list_time_created' => $list_time_created, ':user_id' => $_SESSION['user_id']));
-            $_SESSION['feedback_positive'][] = "New list created";
-            return true;
+            $query->execute(array(':list_name' => $_POST['list_name'], ':list_time_created' => $list_time_created, ':user_id' => $_SESSION['user_id']));
+
+            $last_inserted_id = $this->db->lastInsertId();
+
+            if ($last_inserted_id) {
+                $_SESSION['feedback_positive'][] = "New list created";
+                return $last_inserted_id;
+            } else {
+                $_SESSION['feedback_positive'][] = "List with that name already exists!";
+                return false;
+            }
         }
         return false;
     }
@@ -45,23 +68,15 @@ class ListModel
 
         $count = $query->rowCount();
 
-        if ($count == 1) {
+        if (1 == $count) {
             $_SESSION['feedback_positive'][] = "List deleted";
             return true;
         } else {
             $_SESSION['feedback_negative'][] = "List delete operation failed!";
+            return false;
         }
         return false;
 
-    }
-
-    public function showTasks($list_id)
-    {
-        $sql = "SELECT task_name, task_id FROM task WHERE list_id = :list_id";
-        $query = $this->db->prepare($sql);
-        $query->execute(array(':list_id'=>$list_id));
-
-        return $query->fetchAll();
     }
 
 }

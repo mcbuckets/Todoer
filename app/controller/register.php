@@ -17,21 +17,20 @@ class Register extends Controller
     {
         $register_model          = $this->loadModel('RegisterModel');
         $registration_successful = $register_model->registerNewUser();
-        if ($registration_successful == true) {
-            header('location: ' . URL . 'register/');
-        } else {
-            header('location: ' . URL . 'register/register');
-        }
+
+        header('location: ' . URL . 'register');
     }
 
-    public function verify($user_id, $user_verification_code)
+    public function verify_user($user_id, $user_verification_code)
     {
-        if (isset($user_id) && isset($user_verification_code)) {
+        if (isset($user_id) and isset($user_verification_code)) {
+
             $register_model = $this->loadModel('RegisterModel');
             $register_model->verifyNewUser($user_id, $user_verification_code);
             $this->view->render('register/verify');
+
         } else {
-            header('location:' . URL . 'register/');
+            header('location:' . URL . 'register');
         }
     }
 

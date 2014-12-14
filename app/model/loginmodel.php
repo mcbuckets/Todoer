@@ -33,7 +33,7 @@ class LoginModel
         $count = $query->rowCount();
 
         if ($count != 1) {
-            $_SESSION['feedback_negative'][] = "Login failed! Username does not exist!";
+            $_SESSION['feedback_negative'][] = "Login failed! User with that email does not exist!";
             return false;
         }
 

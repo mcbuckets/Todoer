@@ -15,6 +15,7 @@
         "php": ">=5.3.7",
         "ircmaxell/password-compat": "~1.0.3",
         "phpmailer/phpmailer": "dev-master",
-        "raveren/kint": "dev-master"
+        "raveren/kint": "dev-master",
+        "squizlabs/php_codesniffer": "2.*"
     }
 }
