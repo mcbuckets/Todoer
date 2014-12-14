@@ -53,7 +53,7 @@ class RegisterModel
                 ':user_lastname'                   => $user_lastname,
                 ':user_password_hash'              => $user_password_hash,
                 ':user_email'                      => $user_email,
-                ':user_creation_timestamp'         => $user_creation_time,
+                ':user_creation_time'              => $user_creation_time,
                 ':user_activation_hash'            => $user_activation_hash));
 
             $count = $query->rowCount();
