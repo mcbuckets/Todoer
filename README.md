@@ -3,6 +3,8 @@ Todoer
 
 Task list manager(PHP, MySQL, MVC)
 
+Check wiki for screenshots!
+
 If you want to install it locally you can follow these steps:
 
 1: Clone Todoer repo<br>
