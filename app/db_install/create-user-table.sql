@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS `todoer`.`user`(
- `user_id` int(11) NOT NULL AUTO_INCREMENT ,
+ `user_id` int(11) NOT NULL AUTO_INCREMENT,
  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
  `user_lastname` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
- `user_password_hash` varchar255) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `user_password_hash` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
  `user_email` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
  `user_active` tinyint(1) NOT NULL DEFAULT '0',
  `user_creation_timestamp` timestamp DEFAULT CURRENT_TIMESTAMP,
