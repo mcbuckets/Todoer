@@ -6,6 +6,9 @@ class Login extends Controller
     public function __construct()
     {
         parent::__construct();
+        if (isset($_SESSION['user_logged_in'])) {
+            header('location:' . URL . 'dashboard');
+        }
     }
 
     public function index()
