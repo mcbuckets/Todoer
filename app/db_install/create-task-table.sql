@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS `todoer`.`task` (
  `task_priority` tinyint(1) DEFAULT '1',
  `task_deadline` datetime DEFAULT NULL,
  `task_completed` tinyint(1) DEFAULT '0',
- `user_id` int(11) NOT NULL,
  `list_id` int(11) NOT NULL,
  PRIMARY KEY (`task_id`),
  FOREIGN KEY (list_id)
