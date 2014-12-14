@@ -103,7 +103,8 @@ class TaskModel
                     return false;
                 }
             } else {
-                $_SESSION['feedback_negative'][] = "Task update operation failed out!";
+                $_SESSION['feedback_negative'][] = "There has been an error!";
+                return false;
             }
         }
 
@@ -147,8 +148,8 @@ class TaskModel
                 return true;
             } else {
                 $_SESSION['feedback_negative'][] = "Task already marked complete!";
+                return false;
             }
-
         }
 
         return false;
