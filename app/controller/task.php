@@ -13,9 +13,6 @@ class Task extends Controller
         header('location:' . URL . 'dashboard');
     }
 
-    /**
-     * @param $list_id
-     */
     public function show_list($list_id)
     {
         if (isset($list_id)) {
