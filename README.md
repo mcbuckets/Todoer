@@ -17,5 +17,5 @@ If you want to install it locally you can follow these steps:
       <li>mysql -u root -p  < create-task-table.sql</li>
    </ul>
    
-4: Check config.php in app files for setup
+4: Check config.php in app files for setup<br>
 5: Check .htaccess file for url rewriting and server specific setup
