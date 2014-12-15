@@ -12,12 +12,12 @@ If you want to install it locally you can follow these steps:
 3: Install database and tables from db_install folder which is in Todoer repository<br>
    
          From db_install directory:
-         <ul>
-            <li>mysql -u root -p  < create-database.sql</li>
-            <li>mysql -u root -p  < create-user-table.sql</li>
-            <li>mysql -u root -p  < create-list-table.sql</li>
-            <li>mysql -u root -p  < create-task-table.sql</li>
-         </ul>
+         
+            mysql -u root -p  < create-database.sql
+            mysql -u root -p  < create-user-table.sql
+            mysql -u root -p  < create-list-table.sql
+            mysql -u root -p  < create-task-table.sql
+         
    
 4: Check config.php in app files for setup<br>
 5: Check .htaccess file for url rewriting and server specific setup
